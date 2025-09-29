@@ -1,68 +1,148 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
+  padding: 0;
   margin: 0;
+  list-style: none;
+}
+body {
+  background-color: #0e0e0e;
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+input {
+  color:white
+}
+.todo-app {
+  max-width: 450px;
+  height: 100vh;
+  margin-inline: auto;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+}
+.create-todo {
+  text-align: center;
+}
+.create-todo fieldset {
+  padding: 30px;
+  border-radius: 5px;
+  border-color: gray;
+  display: flex;
+}
+legend {
+  font-size: 14px;
+}
+.create-todo input {
+  padding: 5px 10px;
+  margin-right: 13px;
+  border-radius: 2px;
+  background-color: transparent;
+  /* outline: unset; */
+  border: 1px solid gray;
+  display: block;
+  width: 75%;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+::placeholder {
+  font-size: 13px;
 }
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
+.create-todo button {
+  padding: 8px 13px;
+  border-radius: 1000px;
+  background-color: #ffb711;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+}
+.actions-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+progress {
+  accent-color: #ffb711;
+  outline: unset;
+  height: 18px;
+}
+progress + label {
+  font-size: 12px;
+  margin-left: 10px;
+}
+.actions-wrapper button {
+  background-color: transparent;
+  color: green;
+  padding: 5px 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  display: block;
+}
+.actions-wrapper button:first-of-type {
+  background-color: transparent;
+  color: pink;
+  padding: 5px 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todo-actions.actions {
+  gap: 10px;
+}
+.todos-wrapper {
+  margin-top: 20px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.todos {
+  display: flex;
+  justify-content: space-between;
   background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  padding: 15px 15px;
+  border-radius: 5px;
+  
 }
-button:hover {
-  border-color: #646cff;
+.todos .todo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.todos input {
+  accent-color: green;
+  width: 20px;
+  height: 20px;
 }
+.todos button {
+  background-color: transparent;
+  border: none;
+}
+.save-edit {
+  padding: 8px 13px;
+  border-radius: 1000px;
+  background-color: rgb(47, 255, 64) !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+}
+.edit-container {
+  display: flex;
+  justify-content:center;
+  width: 100%;
+}
+.edit-inp{
+  padding: 5px 10px;
+  margin-right: 13px;
+  border-radius: 2px;
+  background-color: transparent;
+  border: 1px solid gray;
+  display: block;
+  width: 60% !important;
+  height: 25px !important;
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
