@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const TodosActions = ({ todosLen, hasDone, clearTodos, handleChecking }) => {
-  if(todosLen == 0) return;
+  // if(todosLen == 0) return;
   const [checker, setChecker] = useState(true);
   const checkHandler = () => {
     

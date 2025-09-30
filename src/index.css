@@ -26,11 +26,14 @@ input {
 .create-todo fieldset {
   padding: 30px;
   border-radius: 5px;
+  border-bottom-right-radius: unset;
+  border-bottom-left-radius: unset;
   border-color: gray;
   display: flex;
 }
 legend {
   font-size: 14px;
+  color: gray;
 }
 .create-todo input {
   padding: 5px 10px;
@@ -53,6 +56,12 @@ legend {
   text-transform: uppercase;
   font-weight: bold;
   display: block;
+  outline: unset;
+  border: unset;
+}
+.create-todo button:hover {
+  box-shadow: 1px 1px 10px #ffb711;
+
 }
 .actions-wrapper {
   display: flex;
@@ -145,4 +154,32 @@ progress + label {
   width: 60% !important;
   height: 25px !important;
 
+}
+.initial {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid gray;
+  border-top: unset;
+
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  color: gray;
+  gap: 15px;
+}
+.sd {
+  /* min-height: 250px; */
+ padding: 0 15px;
+  border: 1px solid gray;
+  border-top: unset;
+
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  color: gray;
+  gap: 15px;
 }
