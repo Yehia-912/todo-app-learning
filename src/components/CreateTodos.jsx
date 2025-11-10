@@ -1,23 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "./redux/actions";
 
-const CreateTodos = ({ addHandler }) => {
-  const [todo, setTodo] = useState("");
+const CreateTodos = () => {
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState("");
   const createInpRef = useRef(null);
-  /*   Effects     */
-  useEffect(() => {
-    createInpRef.current.focus();
-  }, []);
-  /** handlers */
+
   const submitHandler = (e) => {
     e.preventDefault();
-    if (todo.trim() == "") return; //garde close\
+    if (title.trim() == "") return; //garde close\
     const newTodo = {
       id: Date.now(),
-      title: todo,
-      isDone: false,
+      title,
+      isCompleted: false,
     };
-    addHandler(newTodo);
-    setTodo("");
+    dispatch(addTodo(newTodo));
+    setTitle("");
   };
   return (
     <form className="create-todo" onSubmit={submitHandler}>
@@ -25,8 +24,8 @@ const CreateTodos = ({ addHandler }) => {
         <legend>Write a new todo item</legend>
         <input
           ref={createInpRef}
-          value={todo}
-          onChange={(e) => setTodo(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           placeholder="Learn HTML"
           type="text"
           aria-label="todo-name"

@@ -4,6 +4,7 @@ import CreateTodos from "./CreateTodos";
 import Todos from "./todos/Todos";
 import TodosActions from "./TodosActions";
 import InitialComponent from "./InitialComponent";
+import { useSelector } from "react-redux";
 
 /**
  * useRef() is an important hook to use when I need to store a value during the re-render 
@@ -14,53 +15,44 @@ import InitialComponent from "./InitialComponent";
  *   * When we access the dom we should use use Effect
  */
 
-if (!localStorage.getItem("todos")) {
-  localStorage.setItem("todos", JSON.stringify([]));
-}
+// if (!localStorage.getItem("todos")) {
+//   localStorage.setItem("todos", JSON.stringify([]));
+// }
 
 const TodoApp = () => {
-  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")));
+  const todos = useSelector(state => state.todos)
 
-  const handleCreateTodo = (newTodo) =>
-    setTodos((todos) => [newTodo, ...todos]);
-  const handleEditTodo = (id, newTodo) =>
-    setTodos((todos) => todos.map((todo) => (todo.id == id ? newTodo : todo)));
-  const deleteTodo = (id) =>
-    setTodos((todos) => todos.filter((todo) => todo.id !== id));
+  // const handleCreateTodo = (newTodo) =>
+  //   setTodos((todos) => [newTodo, ...todos]);
+  // const handleEditTodo = (id, newTodo) =>
+  //   setTodos((todos) => todos.map((todo) => (todo.id == id ? newTodo : todo)));
+  // const deleteTodo = (id) =>
+  //   setTodos((todos) => todos.filter((todo) => todo.id !== id));
 
-  const totalOfTodos = todos.length;
-  const completeTasks = todos.reduce(
-    (acc, curr) => (curr.isDone == true ? acc + 1 : acc),
-    0
-  );
+  // const totalOfTodos = todos.length;
+  // const completeTasks = todos.reduce(
+  //   (acc, curr) => (curr.isDone == true ? acc + 1 : acc),
+  //   0
+  // );
 
-  const handleClearance = () => setTodos([]);
-  const handleChecking = (toggler) =>
-    setTodos((todos) => todos.map((todo) => ({ ...todo, isDone: toggler })));
+  // const handleClearance = () => setTodos([]);
+  // const handleChecking = (toggler) =>
+  //   setTodos((todos) => todos.map((todo) => ({ ...todo, isDone: toggler })));
 
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+  // useEffect(() => {
+  //   localStorage.setItem("todos", JSON.stringify(todos));
+  // }, [todos]);
 
 
   return (
     <main className="todo-app">
-      <CreateTodos addHandler={handleCreateTodo} />
+      <CreateTodos  />
       {todos.length == 0 ? (
         <InitialComponent />
       ) : (
         <div className="sd">
-          <TodosActions
-            handleChecking={handleChecking}
-            clearTodos={handleClearance}
-            todosLen={totalOfTodos}
-            hasDone={completeTasks}
-          />
-          <Todos
-            handleEditTodo={handleEditTodo}
-            todos={todos}
-            deleteTodo={deleteTodo}
-          />
+          <TodosActions  />
+          <Todos />
         </div>
       )}
     </main>

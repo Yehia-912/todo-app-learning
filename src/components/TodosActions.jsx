@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
-const TodosActions = ({ todosLen, hasDone, clearTodos, handleChecking }) => {
+const TodosActions = ({ clearTodos, handleChecking }) => {
+
+  const todos = useSelector((state) => state.todos);
+  let completedTodos = todos.filter((todo) => todo.isCompleted == true).length;
+
   // if(todosLen == 0) return;
   const [checker, setChecker] = useState(true);
   const checkHandler = () => {
@@ -11,11 +16,11 @@ const TodosActions = ({ todosLen, hasDone, clearTodos, handleChecking }) => {
   return (
     <div className="actions-wrapper">
       <div className="process">
-        <progress max={todosLen} value={hasDone} id="progress">
+        <progress max={todos.length} value={completedTodos} id="progress">
           2/2
         </progress>
         <label htmlFor="progress">
-          {hasDone} / {todosLen} complete
+          {completedTodos} / {todos.length} complete
         </label>
       </div>
       <div className="actions">
