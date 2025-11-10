@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TodoDec from "./TodoDec";
 
 const EditTodo = ({ editedTitle, handleEdit, handleTodo }) => {
+  let editTodoInp = useRef(null)
+
+  useEffect(()=>{
+    editTodoInp.current.focus()
+
+  },[])
   return (
     <div className="edit-container">
-      <input type="text" name="" id="" className="edit-inp" value={editedTitle} onChange={handleEdit} />
+      <input type="text" name="" id="" className="edit-inp" value={editedTitle} onChange={handleEdit} ref={editTodoInp} />
       <button className="save-edit" onClick={handleTodo}>Save</button>
     </div>
   )

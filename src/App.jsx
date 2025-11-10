@@ -6,5 +6,4 @@ function App() {
     <TodoApp />
   )
 }
-
 export default App

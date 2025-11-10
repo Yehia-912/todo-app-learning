@@ -4,13 +4,10 @@ const TodosActions = ({ todosLen, hasDone, clearTodos, handleChecking }) => {
   // if(todosLen == 0) return;
   const [checker, setChecker] = useState(true);
   const checkHandler = () => {
-    
-
     setChecker((ch) => !ch);
     handleChecking(checker);
   };
 
-  
   return (
     <div className="actions-wrapper">
       <div className="process">
