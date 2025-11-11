@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTodo } from "./redux/actions";
+import { addTodo } from "../redux/actions.js";
 
 const CreateTodos = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const createInpRef = useRef(null);
-
+  useEffect(() => {
+    createInpRef.current.focus();
+  }, []);
   const submitHandler = (e) => {
     e.preventDefault();
     if (title.trim() == "") return; //garde close\

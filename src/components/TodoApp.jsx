@@ -22,23 +22,6 @@ import { useSelector } from "react-redux";
 const TodoApp = () => {
   const todos = useSelector(state => state.todos)
 
-  // const handleCreateTodo = (newTodo) =>
-  //   setTodos((todos) => [newTodo, ...todos]);
-  // const handleEditTodo = (id, newTodo) =>
-  //   setTodos((todos) => todos.map((todo) => (todo.id == id ? newTodo : todo)));
-  // const deleteTodo = (id) =>
-  //   setTodos((todos) => todos.filter((todo) => todo.id !== id));
-
-  // const totalOfTodos = todos.length;
-  // const completeTasks = todos.reduce(
-  //   (acc, curr) => (curr.isDone == true ? acc + 1 : acc),
-  //   0
-  // );
-
-  // const handleClearance = () => setTodos([]);
-  // const handleChecking = (toggler) =>
-  //   setTodos((todos) => todos.map((todo) => ({ ...todo, isDone: toggler })));
-
   // useEffect(() => {
   //   localStorage.setItem("todos", JSON.stringify(todos));
   // }, [todos]);

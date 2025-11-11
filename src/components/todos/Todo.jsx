@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import TodoDec from "./TodoDec";
+import { useDispatch } from "react-redux";
+import { editTodo } from "../../redux/actions.js";
+
 
 const EditTodo = ({ editedTitle, handleEdit, handleTodo }) => {
   let editTodoInp = useRef(null);
@@ -8,7 +11,7 @@ const EditTodo = ({ editedTitle, handleEdit, handleTodo }) => {
     editTodoInp.current.focus();
   }, []);
   return (
-    <div className="edit-container">
+    <form className="edit-container">
       <input
         type="text"
         name=""
@@ -18,17 +21,24 @@ const EditTodo = ({ editedTitle, handleEdit, handleTodo }) => {
         onChange={handleEdit}
         ref={editTodoInp}
       />
-      <button className="save-edit" onClick={handleTodo}>
+      <button
+        type="submit"
+        className="save-edit"
+        onClick={(e) => {
+          e.preventDefault();
+          handleTodo();
+        }}
+      >
         Save
       </button>
-    </div>
+    </form>
   );
 };
 
 const Todo = ({ todo }) => {
   const [toggler, setToggler] = useState(false);
   const [editedTitle, setEditedTitle] = useState(todo.title);
-
+  const dispatch = useDispatch();
   const handleToggler = () => {
     setToggler((toggler) => !toggler);
   };
@@ -36,7 +46,9 @@ const Todo = ({ todo }) => {
     setEditedTitle(e.target.value);
   };
   const handleTodo = () => {
+ 
     const newTodo = { ...todo, title: editedTitle };
+    dispatch(editTodo(newTodo));
     handleToggler();
   };
   return (

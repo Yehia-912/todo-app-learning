@@ -15,6 +15,17 @@ const todosReducer = (state = [], action) => {
           ? { ...todo, isCompleted: !todo.isCompleted }
           : todo
       );
+    case "EDIT_TODO":
+      return state.map((todo) =>
+        todo.id == action.todo.id ? (todo = action.todo) : todo
+      );
+    case "CLEAR_TODOS":
+      return (state = []);
+    case "CHECKALL_TODOS":
+      return state.map((todo) => ({ ...todo, isCompleted: true }));
+    case "UNCHECKALL_TODOS":
+      return state.map((todo) => ({ ...todo, isCompleted: false }));
+
     default:
       return state;
   }

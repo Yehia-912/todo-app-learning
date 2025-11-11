@@ -1,7 +1,7 @@
 import React from "react";
 import { BiSolidPencil, BiSolidTrash } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import { deleteTodo, toggleTodo } from "../redux/actions";
+import { deleteTodo, toggleTodo } from "../../redux/actions";
 
 const TodoDec = ({ todo, handleToggler }) => {
   const dispatch = useDispatch();

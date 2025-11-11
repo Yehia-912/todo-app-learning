@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { checkAllTodos, clearTodos, uncheckAllTodos } from "../redux/actions.js";
 
-const TodosActions = ({ clearTodos, handleChecking }) => {
+const TodosActions = () => {
+  const [checker, setChecker] = useState(true);
+  const dispatch = useDispatch();
 
   const todos = useSelector((state) => state.todos);
   let completedTodos = todos.filter((todo) => todo.isCompleted == true).length;
-
-  // if(todosLen == 0) return;
-  const [checker, setChecker] = useState(true);
-  const checkHandler = () => {
-    setChecker((ch) => !ch);
-    handleChecking(checker);
-  };
 
   return (
     <div className="actions-wrapper">
@@ -24,11 +20,25 @@ const TodosActions = ({ clearTodos, handleChecking }) => {
         </label>
       </div>
       <div className="actions">
-        <button onClick={clearTodos}>clear</button>
+        <button onClick={() => dispatch(clearTodos())}>clear</button>
         {checker ? (
-          <button onClick={checkHandler}>Check All</button>
+          <button
+            onClick={() => {
+              dispatch(checkAllTodos());
+              setChecker(false);
+            }}
+          >
+            Check All
+          </button>
         ) : (
-          <button onClick={checkHandler}>Uncheck All</button>
+          <button
+            onClick={() => {
+              dispatch(uncheckAllTodos());
+              setChecker(true);
+            }}
+          >
+            Uncheck All
+          </button>
         )}
         {/* <button onClick={checkAllTodos}>check all</button> */}
       </div>
